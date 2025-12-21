@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+flagset = "0.4.7"
 good_lp = { version = "1.14.2", features = ["highs"], default-features = false}
 num-traits = "0.2.19"
 thiserror = "2.0.17"
