@@ -77,6 +77,7 @@ pub fn solve_day6_puzzle_part2() -> Result<(), PuzzleError> {
     let mut temp_str_values = vec![vec![String::new(); operators.len()]; rows.len() - 1];
 
     let mut current_col = 0;
+    // Separate each line into columns based on spaces
     for row_char_idx in 0..rows[0].len() {
         if rows.iter().all(|row| row[row_char_idx] == ' ') {
             current_col += 1;
@@ -88,6 +89,7 @@ pub fn solve_day6_puzzle_part2() -> Result<(), PuzzleError> {
         }
     }
 
+    // Form the actual values by combining characters in each column
     println!("Temp values: {:?}", temp_str_values);
     for col_idx in 0..temp_str_values[0].len() {
         let mut row_iter = temp_str_values.iter();
@@ -103,6 +105,7 @@ pub fn solve_day6_puzzle_part2() -> Result<(), PuzzleError> {
         }
     }
 
+    // Transpose the columns to rows to make it easier to compute the final values
     let mut transposed_temp_str_values = vec![vec![String::new(); rows.len() - 1]; operators.len()];
     for i in 0..temp_str_values.len() {
         for j in 0..temp_str_values[i].len() {
@@ -112,6 +115,7 @@ pub fn solve_day6_puzzle_part2() -> Result<(), PuzzleError> {
 
     println!("Transposed Temp values: {:?}", transposed_temp_str_values);
 
+    // Parse the string values into integers
     let mut values = Vec::new();
     for row in transposed_temp_str_values {
         let mut temp = vec![String::new(); row[0].len()];
