@@ -6,4 +6,6 @@ pub enum PuzzleError {
     Io(#[from] std::io::Error),
     #[error("JSON Error: {0}")]
     Json(#[from] serde_json::Error),
+    #[error("{0}")]
+    Custom(&'static str),
 }
