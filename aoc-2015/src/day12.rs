@@ -1,12 +1,4 @@
-use thiserror::Error;
-
-#[derive(Debug, Error)]
-pub enum PuzzleError {
-    #[error("IO error: {0}")]
-    Io(#[from] std::io::Error),
-    #[error("JSON parsing error: {0}")]
-    Json(#[from] serde_json::Error),
-}
+use common::error::PuzzleError;
 
 pub fn solve_day12_puzzle_part1() -> Result<(), PuzzleError> {
     let input = std::fs::read_to_string("inputs/day12.txt")?;

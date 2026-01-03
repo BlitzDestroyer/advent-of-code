@@ -1,14 +1,8 @@
 use std::collections::HashMap;
 
-use thiserror::Error;
+use common::error::PuzzleError;
 
 type ArcRefCell<T> = std::sync::Arc<std::cell::RefCell<T>>;
-
-#[derive(Debug, Error)]
-pub enum PuzzleError {
-    #[error("IO error: {0}")]
-    IoError(#[from] std::io::Error),
-}
 
 #[derive(Debug)]
 struct Wire {
@@ -70,7 +64,8 @@ pub fn solve_day7_puzzle_part1() -> Result<(), PuzzleError> {
             let assignment = Operation::Assignment(value, output_wire);
             ensure_wire_exists(&mut wire_map, output_wire);
             operations.push((assignment, false));
-        } else if parts.len() == 4 {
+        }
+        else if parts.len() == 4 {
             // NOT operation
             let input_wire = parse_operand_and_ensure_wire_exists(parts[1], &mut wire_map);
             let output_wire = parts[3];
@@ -78,7 +73,8 @@ pub fn solve_day7_puzzle_part1() -> Result<(), PuzzleError> {
             ensure_wire_exists(&mut wire_map, output_wire);
 
             operations.push((not_op, false));
-        } else if parts.len() == 5 {
+        }
+        else if parts.len() == 5 {
             let input_wire = parse_operand_and_ensure_wire_exists(parts[0], &mut wire_map);
             let output_wire = parts[4];
             ensure_wire_exists(&mut wire_map, output_wire);
@@ -132,7 +128,8 @@ pub fn solve_day7_puzzle_part2() -> Result<(), PuzzleError> {
             let assignment = Operation::Assignment(value, output_wire);
             ensure_wire_exists(&mut wire_map, output_wire);
             operations.push((assignment, false));
-        } else if parts.len() == 4 {
+        }
+        else if parts.len() == 4 {
             // NOT operation
             let input_wire = parse_operand_and_ensure_wire_exists(parts[1], &mut wire_map);
             let output_wire = parts[3];
@@ -140,7 +137,8 @@ pub fn solve_day7_puzzle_part2() -> Result<(), PuzzleError> {
             ensure_wire_exists(&mut wire_map, output_wire);
 
             operations.push((not_op, false));
-        } else if parts.len() == 5 {
+        }
+        else if parts.len() == 5 {
             let input_wire = parse_operand_and_ensure_wire_exists(parts[0], &mut wire_map);
             let output_wire = parts[4];
             ensure_wire_exists(&mut wire_map, output_wire);

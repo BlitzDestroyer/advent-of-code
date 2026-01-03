@@ -1,10 +1,4 @@
-use thiserror::Error;
-
-#[derive(Debug, Error)]
-pub enum PuzzleError {
-    #[error("IO error: {0}")]
-    Io(#[from] std::io::Error),
-}
+use common::error::PuzzleError;
 
 pub fn solve_day14_puzzle_part1() -> Result<(), PuzzleError> {
     const MAX_TIME: i32 = 2503;

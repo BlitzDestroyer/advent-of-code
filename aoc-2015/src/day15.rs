@@ -1,10 +1,4 @@
-use thiserror::Error;
-
-#[derive(Debug, Error)]
-pub enum PuzzleError {
-    #[error("IO Error: {0}")]
-    Io(#[from] std::io::Error),
-}
+use common::error::PuzzleError;
 
 #[derive(Debug)]
 struct Ingrediant {

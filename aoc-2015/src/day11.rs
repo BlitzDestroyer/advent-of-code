@@ -1,7 +1,8 @@
 use std::collections::HashSet;
 
 use once_cell::sync::Lazy;
-use thiserror::Error;
+
+use common::error::PuzzleError;
 
 static TRIGRAM_SET: Lazy<HashSet<&'static str>> = Lazy::new(|| {
     let trigrams = [
@@ -10,12 +11,6 @@ static TRIGRAM_SET: Lazy<HashSet<&'static str>> = Lazy::new(|| {
 
     trigrams.iter().cloned().collect()
 });
-
-#[derive(Debug, Error)]
-pub enum PuzzleError {
-    #[error("IO error: {0}")]
-    Io(#[from] std::io::Error),
-}
 
 pub fn solve_day11_puzzle_part1() -> Result<(), PuzzleError> {
     let input = std::fs::read_to_string("inputs/day11.txt")?;

@@ -1,12 +1,6 @@
 use std::collections::HashMap;
 
-use thiserror::Error;
-
-#[derive(Debug, Error)]
-pub enum PuzzleError {
-    #[error("IO Error: {0}")]
-    Io(#[from] std::io::Error),
-}
+use common::error::PuzzleError;
 
 pub fn solve_day5_puzzle_part1() -> Result<(), PuzzleError> {
     let input = std::fs::read_to_string("inputs/day5.txt")?;

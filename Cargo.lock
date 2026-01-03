@@ -15,6 +15,7 @@ dependencies = [
 name = "aoc-2015"
 version = "0.1.0"
 dependencies = [
+ "common",
  "itertools 0.14.0",
  "md5",
  "once_cell",
@@ -170,6 +171,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e7caa3f9de89ddbe2c607f4101924c5abec803763ae9534e4f4d7d8f84aa81f0"
 dependencies = [
  "cc",
+]
+
+[[package]]
+name = "common"
+version = "0.1.0"
+dependencies = [
+ "serde_json",
+ "thiserror",
 ]
 
 [[package]]
